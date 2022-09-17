@@ -7,7 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Using Include="Flunt.Validations" />
+    <Using Include="Flunt.Notifications" />
+    <Using Include="ApiMyStore.Infra.Data" />
+    <Using Include="Microsoft.AspNetCore.Authorization" />
+    <Using Include="System.Security.Claims" />
+    <Using Include="ApiMyStore.Domain.Products" />
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="Microsoft.AspNetCore.Authorization" />
+    <Using Include="Microsoft.AspNetCore.Identity" />
+    <Using Include="System.IdentityModel.Tokens.Jwt" />
+    <Using Include="System.Text" />
+    <Using Include="Microsoft.IdentityModel.Tokens" />
+    <Using Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <Using Include="Microsoft.EntityFrameworkCore" />
+    <Using Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <Using Include="ApiMyStore.Endpoints.Categories" />
+    <Using Include="ApiMyStore.Endpoints.Employees" />
+    <Using Include="ApiMyStore.Endpoints.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Flunt" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
@@ -24,10 +46,6 @@
 
   <ItemGroup>
     <None Include="C:\Users\grego\OneDrive\Área de Trabalho\Github\ApiMyStore\ApiMyStore\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Endpoints\Products\" />
   </ItemGroup>
 
 </Project>

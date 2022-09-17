@@ -1,6 +1,4 @@
-﻿using ApiMyStore.Infra.Data;
-
-namespace ApiMyStore.Endpoints.Categories;
+﻿namespace ApiMyStore.Endpoints.Categories;
 
 public class CategoryGetAll
 {
@@ -8,6 +6,7 @@ public class CategoryGetAll
     public static string[] Methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate Handle => Action;
 
+    [Authorize(Policy = "EmployeePolicy")]
     public static IResult Action(ApplicationDbContext context)
     {
         var categoies = context.Categories.ToList();

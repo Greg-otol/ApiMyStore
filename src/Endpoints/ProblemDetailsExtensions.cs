@@ -1,7 +1,4 @@
-﻿using Flunt.Notifications;
-using Microsoft.AspNetCore.Identity;
-
-namespace ApiMyStore.Endpoints;
+﻿namespace ApiMyStore.Endpoints;
 
 public static class ProblemDetailsExtensions
 {

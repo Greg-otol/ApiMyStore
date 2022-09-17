@@ -1,6 +1,4 @@
-﻿using Flunt.Validations;
-
-namespace ApiMyStore.Domain.Products;
+﻿namespace ApiMyStore.Domain.Products;
 
 public class Category : Entity
 {
@@ -29,10 +27,12 @@ public class Category : Entity
         AddNotifications(contract);
     }
 
-    public void EditInfo(string name, bool active)
+    public void EditInfo(string name, bool active, string editedBy)
     {
         Name = name;
         Active = active;
+        EditedBy = editedBy;
+        EditedOn = DateTime.Now;
 
         Validate();
     }

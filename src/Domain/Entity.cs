@@ -1,6 +1,4 @@
-﻿using Flunt.Notifications;
-
-namespace ApiMyStore.Domain;
+﻿namespace ApiMyStore.Domain;
 
 public abstract class Entity : Notifiable<Notification>
 {

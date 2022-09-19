@@ -1,6 +1,4 @@
-﻿using ApiMyStore.Domain.Orders;
-
-namespace ApiMyStore.Infra.Data;
+﻿namespace ApiMyStore.Infra.Data;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {

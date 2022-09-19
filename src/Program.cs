@@ -1,13 +1,10 @@
-﻿using ApiMyStore.Endpoints.Clients;
-using ApiMyStore.Endpoints.Products;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.Data.SqlClient;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 // Configuração do serviço de conexão do Banco de Dados
 builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:ApiMyStoreDb"]);
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddCors();
 
 builder.Services.AddAuthorization(options =>  //
 {
@@ -19,6 +16,8 @@ builder.Services.AddAuthorization(options =>  //
         p.RequireAuthenticatedUser().RequireClaim("EmployeeCode", "001"));
     options.AddPolicy("EmployeePolicy", p =>
         p.RequireAuthenticatedUser().RequireClaim("EmployeeCode"));
+    options.AddPolicy("CpfPolicy", p =>
+        p.RequireAuthenticatedUser().RequireClaim("Cpf"));
 });
 builder.Services.AddAuthentication(x =>
 {
@@ -44,6 +43,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+});
 
 app.UseAuthentication();  //
 app.UseAuthorization();   //
@@ -72,6 +78,9 @@ app.MapMethods(ProductGetShowcase.Template, ProductGetShowcase.Methods, ProductG
 
 app.MapMethods(ClientPost.Template, ClientPost.Methods, ClientPost.Handle);
 app.MapMethods(ClientGet.Template, ClientGet.Methods, ClientGet.Handle);
+
+app.MapMethods(OrderPost.Template, OrderPost.Methods, OrderPost.Handle);
+app.MapMethods(OrderGet.Template, OrderGet.Methods, OrderGet.Handle);
 
 // Filtro de erros
 app.UseExceptionHandler("/error");

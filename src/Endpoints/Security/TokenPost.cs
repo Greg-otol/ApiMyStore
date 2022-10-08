@@ -1,4 +1,6 @@
-﻿namespace ApiMyStore.Endpoints.Security;
+﻿using ApiMyStore.Domain.Products;
+
+namespace ApiMyStore.Endpoints.Security;
 
 public class TokenPost
 {
@@ -38,8 +40,19 @@ public class TokenPost
 
         var tokenHandler = new JwtSecurityTokenHandler();
         var token = tokenHandler.CreateToken(tokenDescriptor);
+        var claimName = claims.FirstOrDefault(c => c.Type == "Name");
+        
+
+        var User = new 
+        {
+            Id = user.Id,
+            UserName = claimName.Value,
+            Email = user.Email
+        };
+
         return Results.Ok(new
         {
+            User,
             token = tokenHandler.WriteToken(token)
         });
     }    

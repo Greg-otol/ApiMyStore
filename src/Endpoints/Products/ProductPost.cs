@@ -6,7 +6,8 @@ public class ProductPost
     public static string[] Methods => new string[] { HttpMethod.Post.ToString() };
     public static Delegate Handle => Action;
 
-    [Authorize(Policy = "EmployeePolicy")]
+    //[Authorize(Policy = "EmployeePolicy")]
+    [Authorize(Policy = "CpfPolicy")]
     public static async Task<IResult> Action(ProductRequest productRequest, HttpContext http, ApplicationDbContext context)
     {
         var userId = http.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;

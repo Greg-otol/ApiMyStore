@@ -47,4 +47,32 @@ public class Product : Entity
             .IsNotNullOrEmpty(EditedBy, "EditedBy");
         AddNotifications(contract);
     }
+
+    private void ValidatePut()
+    {
+        var contract = new Contract<Product>()
+            .IsNotNullOrEmpty(Name, "Name")
+            .IsGreaterOrEqualsThan(Name, 3, "Name")
+            .IsNotNullOrEmpty(Description, "Description")
+            .IsGreaterOrEqualsThan(Description, 10, "Description")
+            .IsGreaterOrEqualsThan(Price, 1, "Price")
+            .IsNotNullOrEmpty(ImageUrl, "ImageUrl")
+            .IsNotNullOrEmpty(CreatedBy, "CreatedBy")
+            .IsNotNullOrEmpty(EditedBy, "EditedBy");
+        AddNotifications(contract);
+    }
+    public void EditInfo(string name, string description, decimal price , string imageUrl, bool hasStock, bool active, string editedBy)
+    {
+        Name = name;
+        Description = description;
+        Price = price;
+        ImageUrl = imageUrl;
+        HasStock = hasStock;
+        Active = active;
+
+        EditedBy = editedBy;
+        EditedOn = DateTime.Now;
+
+        ValidatePut();
+    }
 }

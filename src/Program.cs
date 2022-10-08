@@ -52,7 +52,7 @@ app.UseCors(c =>
 });
 
 app.UseAuthentication();  //
-app.UseAuthorization();   //
+app.UseAuthorization();  //
 
 if (app.Environment.IsDevelopment())
 {
@@ -70,9 +70,14 @@ app.MapMethods(EmployeeGetAll.Template, EmployeeGetAll.Methods, EmployeeGetAll.H
 app.MapMethods(CategoryPost.Template, CategoryPost.Methods, CategoryPost.Handle);
 app.MapMethods(CategoryPut.Template, CategoryPut.Methods, CategoryPut.Handle);
 app.MapMethods(CategoryGetAll.Template, CategoryGetAll.Methods, CategoryGetAll.Handle);
+app.MapMethods(CategoryDelete.Template, CategoryDelete.Methods, CategoryDelete.Handle);
+app.MapMethods(CategoryById.Template, CategoryById.Methods, CategoryById.Handle);
 
 app.MapMethods(ProductPost.Template, ProductPost.Methods, ProductPost.Handle);
 app.MapMethods(ProductGetAll.Template, ProductGetAll.Methods, ProductGetAll.Handle);
+app.MapMethods(ProductPut.Template, ProductPut.Methods, ProductPut.Handle);
+app.MapMethods(ProductDelete.Template, ProductDelete.Methods, ProductDelete.Handle);
+app.MapMethods(ProductById.Template, ProductById.Methods, ProductById.Handle);
 
 app.MapMethods(ProductGetShowcase.Template, ProductGetShowcase.Methods, ProductGetShowcase.Handle);
 
